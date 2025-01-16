@@ -11,6 +11,11 @@ def nasa_home():
     data = response.json() #converte da json a dict python
     return render_template('nasa.html', title=data.get("title"), description=data.get("explanation"), image_url=data.get("url"))
 
+@app.route('/cat')
+def cat_home():
+    response = requests.get('https://catfact.ninja/fact') #richiedo i dati
+    data = response.json() #converte da json a dict python
+    return render_template('cat_fact.html', fact=data.get("fact"))
 
 if __name__ == '__main__':
     app.run(debug=True)
